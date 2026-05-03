@@ -1,0 +1,24 @@
+{% extends 'store/base.html' %}
+
+{% block title %}{{ book.title }} | Book Details{% endblock %}
+
+{% block content %}
+<section class="section-block detail-block fade-in">
+    <div class="section-head">
+        <h1>{{ book.title }}</h1>
+        <a href="{% url 'catalogue' %}">Back to Catalogue</a>
+    </div>
+
+    <div class="detail-meta">
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Genre:</strong> {{ book.genre }}</p>
+        <p><strong>Price:</strong> INR {{ book.price }}</p>
+        <p><strong>Stock:</strong> {{ book.stock }}</p>
+    </div>
+
+    <article class="detail-description">
+        <h2>Full Description</h2>
+        <p>{{ book.description|default:'No description available for this book.' }}</p>
+    </article>
+</section>
+{% endblock %}

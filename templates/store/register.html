@@ -1,0 +1,28 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Register | BookHaven{% endblock %}
+
+{% block content %}
+<section class="form-section">
+    <div class="form-card fade-in">
+        <h1>Create Your Account</h1>
+        <p>Join BookHaven and start building your reading collection.</p>
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <small class="form-error">{{ field.errors|striptags }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary full-width">Register</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
